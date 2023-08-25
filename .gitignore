@@ -1,0 +1,19 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Logs
+logs
+*.log
+
+# Dependency directories
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional: Editor directories and files
+.idea/
+.vscode/
+*.swp
+.DS_Store
