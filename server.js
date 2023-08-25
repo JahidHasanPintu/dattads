@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 const port = 3000;
+
+app.use(bodyParser.json());
 
 // Dummy person data
 const dummyPerson = {
@@ -19,6 +23,21 @@ app.get('/persons', (req, res) => {
 });
 app.get('/', (req, res) => {
   res.json(welcomeMessage);
+});
+
+const users = [];
+app.get('/users', async (req, res) => {
+  try {
+    const pass = 'myPass';
+    const hashedPassword = await bcrypt.hash(pass, 10); // Hash the password
+    const user =  { name: 'Abdur Rahim', password: hashedPassword }
+    // Store the user data (you might want to use a database in a real application)
+    
+
+    res.json({ message: 'User getting successfully', user: user });
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred' });
+  }
 });
 
 // Start the server
