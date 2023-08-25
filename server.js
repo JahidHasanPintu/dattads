@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
+const argon2 = require('argon2');
 const port = 3000;
 
 app.use(bodyParser.json());
@@ -29,7 +29,7 @@ const users = [];
 app.get('/users', async (req, res) => {
   try {
     const pass = 'myPass';
-    const hashedPassword = await bcrypt.hash(pass, 10); // Hash the password
+    const hashedPassword = await argon2.hash(pass);  // Hash the password
     const user =  { name: 'Abdur Rahim', password: hashedPassword }
     // Store the user data (you might want to use a database in a real application)
     
