@@ -8,10 +8,17 @@ const dummyPerson = {
   age: 30,
   occupation: 'Engineer'
 };
+const welcomeMessage = {
+  welcome: 'Welcome to this demo server haha',
+  
+};
 
 // API endpoint for /persons
 app.get('/persons', (req, res) => {
   res.json(dummyPerson);
+});
+app.get('/', (req, res) => {
+  res.json(welcomeMessage);
 });
 
 // Start the server
